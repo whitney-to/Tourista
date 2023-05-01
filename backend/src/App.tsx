@@ -1,14 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
-import { Row } from 'react-bootstrap';
 
 function App() {
   return (
     <div className="App">
-      {/* <header className="App-header">
+      <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -21,15 +18,7 @@ function App() {
         >
           Learn React
         </a>
-      </header> */}
-      <Row>
-        <Header></Header>
-
-      </Row>
-      <Row>
-        <Footer></Footer>
-
-      </Row>
+      </header>
     </div>
   );
 }
