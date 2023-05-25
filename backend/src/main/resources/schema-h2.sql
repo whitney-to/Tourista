@@ -15,7 +15,7 @@ PRIMARY KEY (id)
 );
 
 
-INSERT INTO T_User (login_name, user_password, first_name,last_name,email) 
+INSERT INTO T_User (login_name, user_password, first_name, last_name, email) 
             VALUES ('whitney','password','Whitney','To','whitneyto263@gmail.com');
 
 

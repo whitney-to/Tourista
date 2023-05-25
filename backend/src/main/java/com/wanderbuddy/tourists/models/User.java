@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+// import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.wanderbuddy.tourists.config.Constants;
 
 @Entity
@@ -29,7 +29,7 @@ public class User {
     @Column(length = 50, unique = true, nullable = false)
     private String login;
 
-    //@JsonIgnore //needed if implement serialization
+    // @JsonIgnore //needed if implement serialization
     @NotNull
     @Size(min = 60, max = 60)
     @Column(name = "password_hash", length = 60, nullable = false)
