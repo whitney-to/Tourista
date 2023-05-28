@@ -51,11 +51,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const Header = () => {
+    //
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const [anchorEl2, setAnchorEl2] = React.useState<null | HTMLElement>(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
         React.useState<null | HTMLElement>(null);
 
     const isMenuOpen = Boolean(anchorEl);
+    const isBurgerMenuOpen = Boolean(anchorEl2);
+
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
     const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -74,28 +78,57 @@ export const Header = () => {
     const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
+    const handleBurgerOpen = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl2(event.currentTarget);
+      };
+      const handleBurgerClose = () => {
+        setAnchorEl2(null);
+      };
 
     const menuId = 'primary-search-account-menu';
-    // const renderMenu = (
-    //     <Menu
-    //         anchorEl={anchorEl}
-    //         anchorOrigin={{
-    //             vertical: 'top',
-    //             horizontal: 'right',
-    //         }}
-    //         id={menuId}
-    //         keepMounted
-    //         transformOrigin={{
-    //             vertical: 'top',
-    //             horizontal: 'right',
-    //         }}
-    //         open={isMenuOpen}
-    //         onClose={handleMenuClose}
-    //     >
-    //         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-    //         <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    //     </Menu>
-    // );
+    const renderMenu = (
+        <Menu
+            anchorEl={anchorEl}
+            anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+            }}
+            id={menuId}
+            keepMounted
+            transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+            }}
+            open={isMenuOpen}
+            onClose={handleMenuClose}
+        >
+            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+        </Menu>
+    );
+
+    const renderBurgerMenu = (
+        <Menu
+            anchorEl={anchorEl2}
+            anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+            }}
+            //id={menuId}
+            keepMounted
+            transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+            }}
+            open={isBurgerMenuOpen}
+            onClose={handleBurgerClose}
+        >
+            <MenuItem onClick={handleBurgerClose}>Create New Post</MenuItem>
+            <MenuItem onClick={handleBurgerClose}>Build Your Itinerary</MenuItem>
+            <MenuItem onClick={handleBurgerClose}>Saved Posts</MenuItem>
+
+        </Menu>
+    );
 
     const mobileMenuId = 'primary-search-account-menu-mobile';
     // const renderMobileMenu = (
@@ -154,6 +187,7 @@ export const Header = () => {
             <AppBar position="static">
                 <Toolbar>
                     <IconButton
+                        onClick={handleBurgerOpen}
                         size="large"
                         edge="start"
                         color="inherit"
@@ -168,7 +202,7 @@ export const Header = () => {
                         component="div"
                         sx={{ display: { xs: 'none', sm: 'block' } }}
                     >
-                        WanderBuddy
+                        Tourista
                     </Typography>
                     <Search>
                         <SearchIconWrapper>
@@ -221,8 +255,9 @@ export const Header = () => {
                     </Box>
                 </Toolbar>
             </AppBar>
-            {/* {renderMobileMenu}
-      {renderMenu} */}
+            {/* {renderMobileMenu} */}
+      {renderMenu}
+      {renderBurgerMenu}
         </Box>
     );
 }
